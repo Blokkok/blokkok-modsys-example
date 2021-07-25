@@ -1,0 +1,9 @@
+{
+  "name": "Example module",
+  "description": "Example module of BlokkokModSys",
+  "version": "1",
+  "author": "Iyxan23",
+  "website": "https://github.com/Blokkok/blokkok-modsys-example",
+  "classpath": "com.iyxan.module.ExampleModule",
+  "jar": "module.jar"
+}
