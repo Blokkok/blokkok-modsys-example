@@ -2,7 +2,7 @@ package com.iyxan.module
 
 import android.util.Log
 import com.blokkok.modsys.ModuleLoader
-import com.blokkok.modsys.modinter.Module
+import com.com.blokkok.modsys.modinter.Module
 
 class ExampleModule(
     private val bridge: ModuleLoader.ModuleBridge

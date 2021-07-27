@@ -1,4 +1,4 @@
-package com.blokkok.modsys.modinter
+package com.com.blokkok.modsys.modinter
 
 import com.blokkok.modsys.ModuleLoader
 
