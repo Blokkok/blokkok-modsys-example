@@ -3,7 +3,16 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="Cool_Module.app" target="11" />
+      <module name="Example ModSys Implementation.Example_ModSys_Implementation.module-system" target="11" />
+      <module name="Example_ModSys_Implementation.app" target="11" />
+      <module name="Example_ModSys_Implementation.example-module" target="11" />
+      <module name="Example_ModSys_Implementation.module-system" target="11" />
       <module name="Example_Module.app" target="11" />
+      <module name="Example_Module.example-module" target="11" />
+      <module name="Example_Module.module-system" target="11" />
+      <module name="modsys-example.app" target="11" />
+      <module name="modsys-example.example-module" target="11" />
+      <module name="modsys-example.module-system" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
