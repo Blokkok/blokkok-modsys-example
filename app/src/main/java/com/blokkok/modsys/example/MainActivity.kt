@@ -2,15 +2,18 @@ package com.blokkok.modsys.example
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.blokkok.modsys.ModuleManager
+import com.blokkok.modsys.communication.models.Broadcaster
 import com.blokkok.modsys.example.databinding.ActivityMainBinding
 import com.blokkok.modsys.modinter.exception.NotDefinedException
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var onStartBroadcaster: Broadcaster
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(
                 Intent(this@MainActivity, ModuleManagerActivity::class.java)
             )
+        }
+
+        ModuleManager.executeCommunications {
+            onStartBroadcaster = createBroadcaster("MainActivity_onStart")
+
+            createFunction("MainActivity_addText") {
+                for (item in it) {
+                    if (item !is String) continue
+
+                    binding.randomHolder.addView(
+                        TextView(this@MainActivity).apply {
+                            text = item
+                        }
+                    )
+                }
+            }
         }
 
         binding.callFunc.setOnClickListener {
@@ -40,5 +59,10 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        onStartBroadcaster.broadcast()
     }
 }
