@@ -31,4 +31,14 @@
         android:text="Manager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/call_func"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Call Funcs"
+        app:layout_constraintBottom_toBottomOf="@+id/open_manager"
+        app:layout_constraintStart_toEndOf="@+id/open_manager"
+        app:layout_constraintTop_toTopOf="@+id/open_manager" />
 </androidx.constraintlayout.widget.ConstraintLayout>
