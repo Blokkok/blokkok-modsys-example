@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         ModuleManager.executeCommunications {
             onStartBroadcaster = createBroadcaster("MainActivity_onStart")
+            claimFlag("example-flag")
 
             createFunction("MainActivity_addText") {
                 for (item in it) {
@@ -59,6 +60,13 @@ class MainActivity : AppCompatActivity() {
                     "The module isn't loaded",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
+        }
+
+        binding.printNamespaces.setOnClickListener {
+            ModuleManager.executeCommunications {
+                val namespaces = getFlagNamespaces("example-flag")
+                invokeFunction("MainActivity_addText", namespaces)
             }
         }
     }

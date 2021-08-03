@@ -7,6 +7,7 @@ import com.blokkok.modsys.modinter.Module
 class ExampleModule : Module() {
 
     override val namespace: String get() = "example-module"
+    override val flags: List<String> = listOf("example-flag")
 
     @Suppress("PrivatePropertyName")
     private val TAG = "ExampleModule"
