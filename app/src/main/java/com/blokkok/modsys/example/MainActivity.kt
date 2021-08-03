@@ -36,11 +36,13 @@ class MainActivity : AppCompatActivity() {
                 for (item in it) {
                     if (item !is String) continue
 
-                    binding.randomHolder.addView(
-                        TextView(this@MainActivity).apply {
-                            text = item
-                        }
-                    )
+                    runOnUiThread {
+                        binding.randomHolder.addView(
+                            TextView(this@MainActivity).apply {
+                                text = item
+                            }
+                        )
+                    }
                 }
             }
         }
