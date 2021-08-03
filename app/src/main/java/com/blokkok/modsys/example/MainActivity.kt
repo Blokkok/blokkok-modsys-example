@@ -61,25 +61,6 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
-
-        binding.startStream.setOnClickListener {
-            try {
-                ModuleManager.executeCommunications {
-                    openStream("/example-module", "example-stream") {
-                        send("Hello world! ${this@MainActivity::class.java.name}")
-                        send("This data is sent from the app, into the module and then gets" +
-                                " bounced back into the app by calling the function addText all " +
-                                "through a stream")
-                    }
-                }
-            } catch (e: NotDefinedException) {
-                Toast.makeText(
-                    this,
-                    "The module isn't loaded",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
     }
 
     override fun onStart() {
