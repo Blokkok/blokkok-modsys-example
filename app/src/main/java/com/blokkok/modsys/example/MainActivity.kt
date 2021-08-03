@@ -6,7 +6,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.blokkok.modsys.ModuleManager
-import com.blokkok.modsys.communication.models.Broadcaster
+import com.blokkok.modsys.communication.objects.Broadcaster
 import com.blokkok.modsys.example.databinding.ActivityMainBinding
 import com.blokkok.modsys.modinter.exception.NotDefinedException
 
@@ -50,6 +50,25 @@ class MainActivity : AppCompatActivity() {
                 ModuleManager.executeCommunications {
                     invokeFunction("/example-module", "say-hello")
                     invokeFunction("/example-module", "say-something", listOf("Something"))
+                }
+            } catch (e: NotDefinedException) {
+                Toast.makeText(
+                    this,
+                    "The module isn't loaded",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        binding.startStream.setOnClickListener {
+            try {
+                ModuleManager.executeCommunications {
+                    openStream("/example-module", "example-stream") {
+                        send("Hello world! ${this@MainActivity::class.java.name}")
+                        send("This data is sent from the app, into the module and then gets" +
+                                " bounced back into the app by calling the function addText all " +
+                                "through a stream")
+                    }
                 }
             } catch (e: NotDefinedException) {
                 Toast.makeText(

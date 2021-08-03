@@ -15,22 +15,31 @@ class ExampleModule : Module() {
         Log.d(TAG, "onLoad: Hello world! I have been loaded!")
 
         comContext.createFunction("say-hello") {
-            Log.d(TAG, "say-hello: Hello world! I'm from ${javaClass.name}")
+            comContext.invokeFunction("MainActivity_addText",
+                listOf("Hello World! I'm from ${javaClass.name}!")
+            )
         }
 
         comContext.createFunction("say-something") { args ->
-            Log.d(TAG, "say-something: ${args[0]}")
+            comContext.invokeFunction("MainActivity_addText",
+                listOf(args[0] as String)
+            )
+        }
+
+        comContext.createStream("example-stream") {
+            val data = ArrayList<String>()
+            while (!closed) {
+                data.add(recvBlock() as String)
+            }
+
+            comContext.invokeFunction("MainActivity_addText", data)
         }
 
         val subscription = comContext.subscribeToBroadcast("MainActivity_onStart") {
             Log.d(TAG, "onLoaded: I see MainActivity being started")
 
             comContext.invokeFunction("MainActivity_addText",
-                listOf(
-                    "Hello",
-                    "World!",
-                    "I'm from ${javaClass.name}!"
-                )
+                listOf("onStart!")
             )
         }
 

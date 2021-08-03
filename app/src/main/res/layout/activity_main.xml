@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/open_manager">
+        app:layout_constraintTop_toBottomOf="@+id/call_func">
 
     </LinearLayout>
 
@@ -36,9 +36,20 @@
         android:id="@+id/call_func"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="Call Funcs"
-        app:layout_constraintBottom_toBottomOf="@+id/open_manager"
-        app:layout_constraintStart_toEndOf="@+id/open_manager"
-        app:layout_constraintTop_toTopOf="@+id/open_manager" />
+        app:layout_constraintStart_toStartOf="@+id/open_manager"
+        app:layout_constraintTop_toBottomOf="@+id/open_manager" />
+
+    <Button
+        android:id="@+id/start_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Start Stream"
+        app:layout_constraintBottom_toBottomOf="@+id/call_func"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/call_func"
+        app:layout_constraintTop_toTopOf="@+id/call_func" />
 </androidx.constraintlayout.widget.ConstraintLayout>
