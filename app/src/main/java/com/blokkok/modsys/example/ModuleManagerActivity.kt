@@ -51,9 +51,7 @@ class ModuleManagerActivity : AppCompatActivity() {
     }
 
     private fun listModules() {
-        val modules = ModuleManager.listModules().values
-
-        adapter.modules = modules.toList()
+        adapter.modules = ArrayList(ModuleManager.listModules().values)
         adapter.notifyDataSetChanged()
     }
 }
