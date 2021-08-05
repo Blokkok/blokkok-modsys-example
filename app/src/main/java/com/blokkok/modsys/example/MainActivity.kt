@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             claimFlag("example-flag")
 
             createFunction("MainActivity_addText") {
-                for (item in it) {
+                for (item in it["texts"] as List<*>) {
                     if (item !is String) continue
 
                     runOnUiThread {
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 ModuleManager.executeCommunications {
                     invokeFunction("/example-module", "say-hello")
-                    invokeFunction("/example-module", "say-something", listOf("Something"))
+                    invokeFunction("/example-module", "say-something", mapOf("texts" to "Hi World"))
                 }
             } catch (e: NotDefinedException) {
                 Toast.makeText(
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         binding.printNamespaces.setOnClickListener {
             ModuleManager.executeCommunications {
                 val namespaces = getFlagNamespaces("example-flag")
-                invokeFunction("MainActivity_addText", namespaces)
+                invokeFunction("MainActivity_addText", mapOf("texts" to listOf(namespaces)))
             }
         }
     }

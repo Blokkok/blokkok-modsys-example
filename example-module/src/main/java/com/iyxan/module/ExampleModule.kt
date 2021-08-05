@@ -17,13 +17,13 @@ class ExampleModule : Module() {
 
         comContext.createFunction("say-hello") {
             comContext.invokeFunction("MainActivity_addText",
-                listOf("Hello World! I'm from ${javaClass.name}!")
+                mapOf("texts" to listOf("Hello World! I'm from ${javaClass.name}!"))
             )
         }
 
         comContext.createFunction("say-something") { args ->
             comContext.invokeFunction("MainActivity_addText",
-                listOf(args[0] as String)
+                mapOf("texts" to listOf(args["text"]))
             )
         }
 
@@ -31,7 +31,7 @@ class ExampleModule : Module() {
             Log.d(TAG, "onLoaded: I see MainActivity being started")
 
             comContext.invokeFunction("MainActivity_addText",
-                listOf("onStart!")
+                mapOf("texts" to listOf("onStart!"))
             )
         }
 
