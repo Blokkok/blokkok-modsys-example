@@ -1,7 +1,9 @@
 {
+  "id": "example-module-blokkok-modsys",
   "name": "Example module",
   "description": "Example module of BlokkokModSys",
   "version": "1",
+  "library_version": "0.1-experimental-annotation",
   "author": "Iyxan23",
   "website": "https://github.com/Blokkok/blokkok-modsys-example",
   "classpath": "com.iyxan.module.ExampleModule",
