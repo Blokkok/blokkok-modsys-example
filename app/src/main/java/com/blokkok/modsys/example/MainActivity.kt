@@ -53,6 +53,20 @@ class MainActivity : AppCompatActivity() {
                 ModuleManager.executeCommunications {
                     invokeFunction("/example-module", "say-hello")
                     invokeFunction("/example-module", "say-something", mapOf("texts" to "Hi World"))
+
+                    invokeFunction("/example-module", "ann_test")
+                    invokeFunction("/example-module", "ann_test2", mapOf("text" to "Hi World!"))
+                    invokeFunction(
+                        "/example-module",
+                        "ann_test_optional",
+                        mapOf("text" to "Hello")
+                    )
+
+                    invokeFunction(
+                        "/example-module",
+                        "ann_test_optional",
+                        mapOf("text" to "Hello, I have a number", "number" to 100)
+                    )
                 }
             } catch (e: NotDefinedException) {
                 Toast.makeText(

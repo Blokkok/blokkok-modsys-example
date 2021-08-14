@@ -3,6 +3,7 @@ package com.iyxan.module
 import android.util.Log
 import com.blokkok.modsys.communication.CommunicationContext
 import com.blokkok.modsys.modinter.Module
+import com.blokkok.modsys.modinter.annotations.Function
 
 class ExampleModule : Module() {
 
@@ -38,6 +39,21 @@ class ExampleModule : Module() {
         comContext.createFunction("unsubscribe") {
             subscription.unsubscribe()
         }
+    }
+
+    @Function(name = "ann_test")
+    fun annotationTest() {
+        Log.d(TAG, "annotationTest: Hello world!!")
+    }
+
+    @Function(name = "ann_test2")
+    fun annotationTest2(text: String) {
+        Log.d(TAG, "annotationTest: $text")
+    }
+
+    @Function(name = "ann_test_optional")
+    fun annOptionalParamTest(text: String, number: Int = 5) {
+        Log.d(TAG, "called with: text = $text, number = $number")
     }
 
     override fun onUnloaded(comContext: CommunicationContext) {
