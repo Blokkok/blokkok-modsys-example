@@ -67,6 +67,23 @@ class MainActivity : AppCompatActivity() {
                         "ann_test_optional",
                         mapOf("text" to "Hello, I have a number", "number" to 100)
                     )
+
+                    // namespaces
+                    invokeFunction(
+                        "/example-module/hello",
+                        "test"
+                    )
+
+                    invokeFunction(
+                        "/example-module/hello",
+                        "test2",
+                        mapOf("text" to "hello from the host")
+                    )
+
+                    invokeFunction(
+                        "/example-module/hello/nested",
+                        "something",
+                    )
                 }
             } catch (e: NotDefinedException) {
                 Toast.makeText(

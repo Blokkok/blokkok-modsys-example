@@ -4,7 +4,9 @@ import android.util.Log
 import com.blokkok.modsys.communication.CommunicationContext
 import com.blokkok.modsys.modinter.Module
 import com.blokkok.modsys.modinter.annotations.Function
+import com.blokkok.modsys.modinter.annotations.Namespace
 
+@Suppress("unused")
 class ExampleModule : Module() {
 
     override val namespace: String get() = "example-module"
@@ -54,6 +56,27 @@ class ExampleModule : Module() {
     @Function(name = "ann_test_optional")
     fun annOptionalParamTest(text: String, number: Int = 5) {
         Log.d(TAG, "called with: text = $text, number = $number")
+    }
+
+    @Namespace(name = "hello")
+    object HelloNamespace {
+        @Function(name = "test")
+        fun testFunction() {
+            Log.d("HelloNamespace", "testFunction: hello world!")
+        }
+
+        @Function(name = "test2")
+        fun testFunction2(text: String) {
+            Log.d("HelloNamespace", "testFunction: hello world! arg: $text")
+        }
+
+        @Namespace(name = "nested")
+        object NestedNamespace {
+            @Function
+            fun something() {
+                Log.d("NestedNamespace", "something: it works!")
+            }
+        }
     }
 
     override fun onUnloaded(comContext: CommunicationContext) {
