@@ -7,3 +7,4 @@ project(':module-interface').projectDir = new File(rootDir, 'submodules/blokkok-
 project(':module-bridge-stub').projectDir = new File(rootDir, 'submodules/blokkok-modsys/module-bridge-stub/')
 include ':app'
 include ':example-module'
+include ':example-module2'

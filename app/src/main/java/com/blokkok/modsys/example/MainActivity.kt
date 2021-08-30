@@ -84,6 +84,12 @@ class MainActivity : AppCompatActivity() {
                         "/example-module/hello/nested",
                         "something",
                     )
+
+                    // extension points
+                    invokeFunction(
+                        "/example-module",
+                        "write-stuff",
+                    )
                 }
             } catch (e: NotDefinedException) {
                 Toast.makeText(

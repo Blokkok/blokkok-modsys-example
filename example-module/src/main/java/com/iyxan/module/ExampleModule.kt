@@ -3,7 +3,9 @@ package com.iyxan.module
 import android.util.Log
 import com.blokkok.modsys.communication.CommunicationContext
 import com.blokkok.modsys.modinter.Module
+import com.blokkok.modsys.modinter.annotations.ExtensionPoint
 import com.blokkok.modsys.modinter.annotations.Function
+import com.blokkok.modsys.modinter.annotations.ImplementsExtensionPoint
 import com.blokkok.modsys.modinter.annotations.Namespace
 
 @Suppress("unused")
@@ -43,6 +45,17 @@ class ExampleModule : Module() {
         }
     }
 
+    private var extensions: ArrayList<Writer>? = null
+
+    override fun onAllLoaded(comContext: CommunicationContext) {
+        extensions = comContext.retrieveExtensions(Writer::class.java)
+
+        Log.d(
+            TAG,
+            "onAllLoaded: Registered extensions: ${extensions?.joinToString { it.name() }}"
+        )
+    }
+
     @Function(name = "ann_test")
     fun annotationTest() {
         Log.d(TAG, "annotationTest: Hello world!!")
@@ -77,6 +90,20 @@ class ExampleModule : Module() {
                 Log.d("NestedNamespace", "something: it works!")
             }
         }
+    }
+
+    @Function(name = "write-stuff")
+    fun writeStuff() {
+        extensions?.forEach {
+            Log.d(TAG, "writeStuff: writing to ${it.name()}")
+            it.print("Hello world!")
+        }
+    }
+
+    @ExtensionPoint
+    interface Writer {
+        fun name(): String
+        fun print(str: String)
     }
 
     override fun onUnloaded(comContext: CommunicationContext) {

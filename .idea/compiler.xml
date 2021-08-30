@@ -12,6 +12,7 @@
       <module name="Example_Module.module-system" target="11" />
       <module name="modsys-example.app" target="11" />
       <module name="modsys-example.example-module" target="11" />
+      <module name="modsys-example.example-module2" target="11" />
       <module name="modsys-example.module-system" target="11" />
     </bytecodeTargetLevel>
   </component>
