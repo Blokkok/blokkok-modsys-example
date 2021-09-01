@@ -21,9 +21,9 @@ class ModuleManagerActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.loadAllButton.setOnClickListener {
-            ModuleManager.loadModules({
+            ModuleManager.loadModules {
                 Toast.makeText(this, "it", Toast.LENGTH_LONG).show()
-            }, codeCacheDir.absolutePath)
+            }
         }
 
         binding.unloadAllButton.setOnClickListener {
