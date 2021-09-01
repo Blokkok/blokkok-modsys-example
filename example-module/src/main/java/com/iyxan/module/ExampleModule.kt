@@ -100,7 +100,7 @@ class ExampleModule : Module() {
         }
     }
 
-    @ExtensionPoint
+    @ExtensionPoint(name = "writer")
     interface Writer {
         fun name(): String
         fun print(str: String)
