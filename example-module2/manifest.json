@@ -6,6 +6,7 @@
   "library_version": "0.1-experimental-annotation",
   "author": "Iyxan23",
   "website": "https://github.com/Blokkok/blokkok-modsys-example",
+  "depends_on": ["example-module-blokkok-modsys:1"],
   "classpath": "com.iyxan.module.ExampleModule",
   "jar": "module.jar"
 }
