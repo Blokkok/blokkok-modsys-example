@@ -22,7 +22,7 @@ class ModuleManagerActivity : AppCompatActivity() {
 
         binding.loadAllButton.setOnClickListener {
             ModuleManager.loadModules {
-                Toast.makeText(this, "it", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
             }
         }
 
