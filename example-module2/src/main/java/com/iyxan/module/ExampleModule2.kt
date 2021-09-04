@@ -9,7 +9,7 @@ import com.blokkok.modsys.modinter.annotations.ImplementsExtensionPoint
 import com.blokkok.modsys.modinter.annotations.Namespace
 
 @Suppress("unused")
-class ExampleModule : Module() {
+class ExampleModule2 : Module() {
 
     override val namespace: String get() = "example-module2"
     override val flags: List<String> = listOf("example-flag")
